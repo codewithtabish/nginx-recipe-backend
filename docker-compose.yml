@@ -1,0 +1,24 @@
+version: "3.8"
+
+services:
+  backend:
+    container_name: recipe-backend
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "3000:3000" # host:container
+    env_file:
+      - .env.prod # production secrets
+    restart: always # auto-restart on crash or reboot
+    networks:
+      - app-network # connect to shared network
+    logging:
+      driver: json-file
+      options:
+        max-size: "10m"
+        max-file: "3"
+
+networks:
+  app-network:
+    driver: bridge

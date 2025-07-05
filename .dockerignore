@@ -1,0 +1,43 @@
+# Node dependencies
+node_modules
+npm-debug.log
+yarn.lock
+pnpm-lock.yaml
+
+# Build output
+dist
+build
+
+# Environment files
+.env
+.env.*  # in case you use multiple environments
+
+# Editor/IDE settings
+.vscode
+.idea
+
+# OS junk
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+
+# TypeScript cache
+*.tsbuildinfo
+
+# ESLint / Prettier config and cache
+.eslintrc.js
+.eslintrc.cjs
+eslint.config.js
+.prettierrc
+.prettierrc.js
+.prettierignore
+.eslintcache
+.prettiercache
+
+# Test files (optional)
+__tests__/
+*.test.ts
+*.spec.ts
+coverage/
