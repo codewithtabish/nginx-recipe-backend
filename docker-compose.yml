@@ -26,6 +26,8 @@ services:
       - "80:80"
     volumes:
       - ./nginx/default.conf:/etc/nginx/conf.d/default.conf
+      - ./public:/usr/share/nginx/html # ✅ THIS LINE IS MISSING
+
     depends_on:
       - recipe-backend
     restart: always
