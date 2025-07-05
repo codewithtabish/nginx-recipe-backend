@@ -11,6 +11,14 @@ app.get("/", (_: Request, res: Response): void => {
   res.send("Hey this is just checking");
 });
 
+app.get("/api/v1/books", (_: Request, res: Response): void => {
+  res.send("These are all books");
+});
+
+app.get("/api/v1/users", (_: Request, res: Response): void => {
+  res.send("These are all users");
+});
+
 app.listen(PORT, (): void => {
   console.log("server started at port ", PORT);
 });

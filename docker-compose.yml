@@ -1,23 +1,36 @@
 version: "3.8"
 
 services:
-  backend:
+  recipe-backend:
     container_name: recipe-backend
     build:
       context: .
       dockerfile: Dockerfile
-    ports:
-      - "3000:3000" # host:container
+    expose:
+      - "3000" # Only exposed internally to nginx
     env_file:
-      - .env.prod # production secrets
-    restart: always # auto-restart on crash or reboot
+      - .env.prod
+    restart: always
     networks:
-      - app-network # connect to shared network
+      - app-network
     logging:
       driver: json-file
       options:
         max-size: "10m"
         max-file: "3"
+
+  recipe-nginx:
+    image: nginx:latest
+    container_name: recipe-nginx
+    ports:
+      - "80:80"
+    volumes:
+      - ./nginx/default.conf:/etc/nginx/conf.d/default.conf
+    depends_on:
+      - recipe-backend
+    restart: always
+    networks:
+      - app-network
 
 networks:
   app-network:
