@@ -3,68 +3,214 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Recipe API – Nginx is Working</title>
+    <title>Recipe API – Landing Page</title>
     <style>
-      body {
+      * {
+        box-sizing: border-box;
         margin: 0;
+        padding: 0;
+      }
+
+      body {
         font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-        background: linear-gradient(to right, #f8fafc, #e2e8f0);
+        background-color: #f9fafb;
         color: #1f2937;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        min-height: 100vh;
-        padding: 20px;
+        line-height: 1.6;
+      }
+
+      header {
+        background: linear-gradient(to right, #3b82f6, #2563eb);
+        color: white;
+        padding: 60px 20px;
         text-align: center;
       }
 
-      h1 {
-        font-size: 3rem;
+      header h1 {
+        font-size: 3.5rem;
+        margin-bottom: 1rem;
+      }
+
+      header p {
+        font-size: 1.3rem;
+        max-width: 700px;
+        margin: 0 auto;
+      }
+
+      section {
+        padding: 60px 20px;
+        max-width: 1000px;
+        margin: 0 auto;
+      }
+
+      h2 {
+        font-size: 2.2rem;
         color: #2563eb;
         margin-bottom: 1rem;
       }
 
-      p {
-        font-size: 1.2rem;
-        max-width: 700px;
-        line-height: 1.6;
+      .features,
+      .use-cases {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 20px;
+        margin-top: 2rem;
       }
 
       .card {
-        background-color: white;
-        padding: 2rem;
-        border-radius: 1rem;
-        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
-        margin-top: 2rem;
+        background: white;
+        padding: 20px;
+        border-radius: 12px;
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
+        transition: transform 0.3s ease;
+      }
+
+      .card:hover {
+        transform: translateY(-5px);
+      }
+
+      .card h3 {
+        color: #1f2937;
+        font-size: 1.2rem;
+        margin-bottom: 0.5rem;
+      }
+
+      .card p {
+        font-size: 0.95rem;
+        color: #4b5563;
+      }
+
+      .highlight {
+        color: #2563eb;
+        font-weight: bold;
+      }
+
+      .cta {
+        background: #1d4ed8;
+        color: white;
+        text-align: center;
+        padding: 60px 20px;
+      }
+
+      .cta h2 {
+        color: white;
+        margin-bottom: 1rem;
+      }
+
+      .cta a {
+        background: white;
+        color: #1d4ed8;
+        padding: 12px 25px;
+        font-size: 1rem;
+        border-radius: 6px;
+        text-decoration: none;
+        font-weight: bold;
       }
 
       footer {
-        margin-top: 2rem;
+        text-align: center;
+        padding: 20px;
         font-size: 0.9rem;
         color: #6b7280;
+        background-color: #f3f4f6;
+      }
+
+      @media (max-width: 600px) {
+        header h1 {
+          font-size: 2.2rem;
+        }
+
+        section {
+          padding: 40px 16px;
+        }
       }
     </style>
   </head>
   <body>
-    <h1>🚀 Welcome to Recipe API</h1>
+    <header>
+      <h1>🍽️ Recipe API</h1>
+      <p>
+        Your backend is running live behind NGINX & Docker with full CI/CD support from GitHub
+        Actions.
+      </p>
+    </header>
 
-    <div class="card">
+    <section>
+      <h2>🌟 Features</h2>
+      <div class="features">
+        <div class="card">
+          <h3>Fast Node.js Backend</h3>
+          <p>Built using modern TypeScript for clean and maintainable code structure.</p>
+        </div>
+        <div class="card">
+          <h3>Dockerized Services</h3>
+          <p>Both NGINX and Node.js apps are containerized for seamless deployment.</p>
+        </div>
+        <div class="card">
+          <h3>NGINX as Reverse Proxy</h3>
+          <p>Handles routing, static files, and reverse proxying to your backend API.</p>
+        </div>
+        <div class="card">
+          <h3>CI/CD Integration</h3>
+          <p>Changes auto-deploy with GitHub Actions—no need to SSH manually again!</p>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <h2>🚀 Use Cases</h2>
+      <div class="use-cases">
+        <div class="card">
+          <h3>📱 Mobile App Backend</h3>
+          <p>Ideal as a backend for your recipe-based mobile or web application.</p>
+        </div>
+        <div class="card">
+          <h3>📦 API as a Service</h3>
+          <p>Deploy and maintain your own API service for developers or teams.</p>
+        </div>
+        <div class="card">
+          <h3>🧪 Developer Testing</h3>
+          <p>Test frontend applications easily with your real, live backend API.</p>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <h2>📦 How It's Deployed</h2>
       <p>
-        This HTML page is served by <strong>NGINX</strong> running inside <strong>Docker</strong>!
-        🎉 And this is checking of data and this git commit -m "Test CI/CD deployment"
+        This app is deployed using <span class="highlight">Docker</span> and
+        <span class="highlight">GitHub Actions</span>. On every push to the
+        <code>master</code> branch:
       </p>
+      <ul style="margin-top: 1rem; padding-left: 20px; color: #4b5563">
+        <li>✔️ Source is pulled via GitHub Actions.</li>
+        <li>✔️ Backend is built and bundled using <code>tsc</code>.</li>
+        <li>✔️ Docker containers are rebuilt and restarted.</li>
+        <li>✔️ Landing page is served via NGINX.</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>🔗 Try the API</h2>
       <p>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Natus, ipsum voluptatem. Natus
-        sapiente aperiam quaerat molestias quibusdam officia tenetur culpa quod voluptas fugit sunt,
-        incidunt vitae iure earum laudantium atque. incidunt vitae iure earum laudantium atque.
-        incidunt vitae iure earum laudantium atque. incidunt vitae iure earum laudantium atque.
-        incidunt vitae iure earum laudantium atque. incidunt vitae iure earum laudantium atque.
-        incidunt vitae iure earum laudantium atque. incidunt vitae iure earum laudantium atque.
-        incidunt vitae iure earum laudantium atque.
+        Want to test it out? Access your API endpoints directly by visiting:<br />
+        <code>https://your-domain.com/api/recipes</code>
       </p>
+      <p style="margin-top: 10px; font-size: 0.95rem; color: #6b7280">
+        *(Replace the domain with your actual deployment URL)*
+      </p>
+    </section>
+
+    <div class="cta">
+      <h2>Need to Update This Page?</h2>
+      <p>
+        Just edit <code>nginx/html/index.html</code> and push to GitHub. CI/CD will redeploy it
+        automatically.
+      </p>
+      <a href="https://github.com/codewithtabish/nginx-recipe-backend" target="_blank"
+        >View on GitHub</a
+      >
     </div>
 
-    <footer>© 2025 Recipe API | NGINX + Docker Demo</footer>
+    <footer>© 2025 Recipe API | Built with Node.js, Docker, and GitHub Actions</footer>
   </body>
 </html>
